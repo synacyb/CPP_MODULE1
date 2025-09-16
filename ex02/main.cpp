@@ -26,6 +26,11 @@ int main()
             if(contact.add_contact())
                 return 1;
         }
+        else if(line == "SEARCH")
+        {
+            if(contact.display_contacts())
+                return 1;
+        }
         else if (line == "EXIT")
             break ;
         else

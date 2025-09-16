@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class contact{
+class Contact{
     public:
         void    set_first_name(std::string &name);
         void    set_last_name(std::string &name);

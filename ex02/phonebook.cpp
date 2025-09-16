@@ -135,3 +135,37 @@ int    PhoneBook::add_contact(){
         num_contacts = 0;
     return 0;
 }
+
+void display_header() {
+    std::cout << "|" << std::setw(10) << "Index" << "|";
+    std::cout << std::setw(10) << "First Name" << "|";
+    std::cout << std::setw(10) << "Last Name" << "|";
+    std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
+}
+
+std::string take_needed_segment(const std::string& str){
+    if (str.length() > 10) {
+        return str.substr(0, 9) + ".";
+    }
+    return str;
+}
+
+void    display_contact_row(Contact contact, int index){
+    std::cout << "|" << std::setw(10) << index << "|";
+    std::cout << std::setw(10) << take_needed_segment(contact.get_first_name()) << "|";
+    std::cout << std::setw(10) << take_needed_segment(contact.get_last_name()) << "|";
+    std::cout << std::setw(10) << take_needed_segment(contact.get_nickname()) << "|";
+    std::cout << std::endl;
+}
+
+int     PhoneBook::display_contacts(){
+    if(num_contacts == 0){
+        std::cout << "\033[1;33m⚠️ You don't have any contact yet!\033[0m\n";
+        return 0;
+    }
+    display_header();
+    for(int index = 0; (index < 8 && Max_contact[index].get_first_name() != ""); index++){
+        display_contact_row(Max_contact[index], index);
+    }
+    return 0;
+}
