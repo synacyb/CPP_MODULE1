@@ -1,0 +1,137 @@
+#include "phonebook.hpp"
+
+PhoneBook::PhoneBook(){num_contacts = 0;}
+
+int     valid_line(const std::string &line) {
+    if (line.empty())
+        return 1;
+
+    for (size_t i = 0; i < line.size(); i++) {
+        if (!std::isspace((int)(line[i])))
+            return 0;
+    }
+    return 1;
+}
+
+int     parsse_the_number(const std::string &line)
+{
+    for (size_t i = 0; i < line.size(); i++)
+    {
+        if(!std::isdigit((int)line[i]))
+            return 1;
+    }
+    return 0;
+}
+
+int    PhoneBook::check_set_first_name(){
+    std::string line;
+    while (true) {
+        std::cout << "Enter the first name : ";
+        if (!(std::getline(std::cin, line)))
+            return 1;
+
+        if (valid_line(line)) {
+            std::cout << "\033[1;31m❌ Invalid input, please try again.\033[0m\n";
+            continue;
+        }
+        break;
+    }
+    Max_contact[num_contacts].set_first_name(line);
+    std::cout << std::endl;
+    return 0;
+}
+
+int     PhoneBook::check_set_last_name(){
+    std::string line;
+    while (true) {
+        std::cout << "Enter the last name : ";
+        if (!(std::getline(std::cin, line)))
+            return 1;
+
+        if (valid_line(line)) {
+            std::cout << "\033[1;31m❌ Invalid input, please try again.\033[0m\n";
+            continue;
+        }
+        break;
+    }
+    Max_contact[num_contacts].set_last_name(line);
+    std::cout << std::endl;
+    return 0;
+}
+
+int     PhoneBook::check_set_nickname(){
+    std::string line;
+    while (true) {
+        std::cout << "Enter the nickname : ";
+        if (!(std::getline(std::cin, line)))
+            return 1;
+
+        if (valid_line(line)) {
+            std::cout << "\033[1;31m❌ Invalid input, please try again.\033[0m\n";
+            continue;
+        }
+        break;
+    }
+    Max_contact[num_contacts].set_nickname(line);
+    std::cout << std::endl;
+    return 0;
+}
+
+int     PhoneBook::check_set_phone_num(){
+    std::string line;
+    while (true) {
+        std::cout << "Enter the phone number : ";
+        if (!(std::getline(std::cin, line)))
+            return 1;
+
+        if (valid_line(line)) {
+            std::cout << "\033[1;31m❌ Invalid input, please try again.\033[0m\n";
+            continue;
+        }
+        if(parsse_the_number(line)){
+            std::cout << "\033[1;31m❌ Invalid input, please try again.\033[0m\n";
+            continue;
+        }
+        break;
+    }
+    Max_contact[num_contacts].set_phone_number(line);
+    std::cout << std::endl;
+    return 0;
+}
+
+int     PhoneBook::check_set_dark_secret(){
+    std::string line;
+    while (true) {
+        std::cout << "Enter the darkest secret : ";
+        if (!(std::getline(std::cin, line)))
+            return 1;
+
+        if (valid_line(line)) {
+            std::cout << "❌ Invalid input, please try again.\n";
+            continue;
+        }
+        break;
+    }
+    Max_contact[num_contacts].set_darkest_secret(line);
+    std::cout << std::endl;
+    return 0;
+}
+
+int    PhoneBook::add_contact(){
+
+    if(check_set_first_name())
+        return 1;
+    if(check_set_last_name())
+        return 1;
+    if(check_set_nickname())
+        return 1;
+    if(check_set_phone_num())
+        return 1;
+    if(check_set_dark_secret())
+        return 1;
+    std::cout << "\033[1;32m✅ Contact successfully created!\033[0m\n";
+    num_contacts++;
+    if(num_contacts > 7)
+        num_contacts = 0;
+    return 0;
+}
