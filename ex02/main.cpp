@@ -18,7 +18,7 @@ int main()
     print_welcome();
     while (true)
     {
-        std::cout << ">";
+        std::cout << "HOME ᯓ★ ";
         if(!(std::getline(std::cin, line)))
             return 1;
         if(line == "ADD")
