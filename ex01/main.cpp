@@ -36,5 +36,6 @@ int main()
         else
             std::cout << "\033[1;31m❌ Invalid command! Type ADD, SEARCH, or EXIT.\033[0m\n";
     }
+    std::cout << BOLD << YELLOW << "👋 Good bye, please stay!" << RESET << std::endl;
     return 0;
 }
