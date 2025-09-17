@@ -184,7 +184,7 @@ int parsse_line(std::string &line){
         return 1;
     for(int i = 0; i < line.size(); i++){
         if(!std::isdigit((int)line[i])){
-            std::cout << "invalid input (enter just a number)" << std::endl;
+            std::cout << RED << "❌invalid input (enter just a number)" << RESET << std::endl;
             return 1;
         }
     }
@@ -202,7 +202,7 @@ int     PhoneBook::display_contacts(){
     for(int index = 0; (index < 8 && Max_contact[index].get_first_name() != ""); index++){
         display_contact_row(Max_contact[index], index);
     }
-    std::cout << "SEARCH : Enter index of the contact that you want searched !" << std::endl;
+    std::cout << "SEARCH ᯓ★: Enter index of the contact that you want searched !" << std::endl;
     for(;;){
         std::cout << "SEARCH ᯓ★ ";
         if(!std::getline(std::cin, line))
