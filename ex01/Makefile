@@ -5,8 +5,8 @@ RM      = rm -rf
 
 
 SRC  = main.cpp \
-	   contact.cpp \
-	   phonebook.cpp 
+	   Contact.cpp \
+	   PhoneBook.cpp 
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)
