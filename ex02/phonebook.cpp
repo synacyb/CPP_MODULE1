@@ -157,8 +157,41 @@ void    display_contact_row(Contact contact, int index){
     std::cout << std::setw(10) << take_needed_segment(contact.get_nickname()) << "|";
     std::cout << std::endl;
 }
+int    search_contact(Contact *Search, int index){
+
+    if(index > 7){
+        std::cout << "invalid index pls enter betwine 0 -> 7 !" << std::endl;
+        return 1;
+    }
+    else if(Search[index].get_first_name() == ""){
+        std::cout << "this contact not found pls check agine !" << std::endl;
+        return 1;
+    }
+    std::cout << "First Name : " << Search[index].get_first_name() << std::endl;
+    std::cout << "Last Name : " << Search[index].get_last_name() << std::endl;
+    std::cout << "Nickname : " << Search[index].get_nickname() << std::endl;
+    std::cout << "Phone Number : " << Search[index].get_phone_number() << std::endl;
+    std::cout << "Darkest Secret : " << Search[index].get_darkest_secret() << std::endl;
+    return 0;
+}
+
+int parsse_line(std::string &line){
+    if(line.size() > 1){
+        std::cout << "invalid size !" << std::endl;
+        return 1;
+    }
+    for(int i = 0; i < line.size(); i++){
+        if(!std::isdigit((int)line[i])){
+            std::cout << "invalid input (enter just a number)" << std::endl;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 int     PhoneBook::display_contacts(){
+    std::string line;
+
     if(num_contacts == 0){
         std::cout << "\033[1;33m⚠️ You don't have any contact yet!\033[0m\n";
         return 0;
@@ -166,6 +199,19 @@ int     PhoneBook::display_contacts(){
     display_header();
     for(int index = 0; (index < 8 && Max_contact[index].get_first_name() != ""); index++){
         display_contact_row(Max_contact[index], index);
+    }
+    std::cout << "Enter index of the contact that you want searched !" << std::endl;
+    for(;;){
+        std::cout << ">";
+        if(!std::getline(std::cin, line))
+            return 1;
+        if(parsse_line(line))
+            continue;
+        int number = atoi(line.c_str());
+        if(search_contact(Max_contact, number))
+            continue;
+        else
+            break;
     }
     return 0;
 }
