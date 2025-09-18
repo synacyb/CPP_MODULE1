@@ -194,7 +194,7 @@ int parsse_line(std::string &line){
 int     PhoneBook::display_contacts(){
     std::string line;
 
-    if(num_contacts == 0){
+    if(Max_contact[0].get_first_name() == ""){
         std::cout << "\033[1;33m⚠️ You don't have any contact yet!\033[0m\n";
         return 0;
     }

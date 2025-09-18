@@ -82,33 +82,25 @@ protected - members cannot be accessed from outside the class, however, they can
 
 // Access Private Members !!
 
-class MyClass {
-  public:    // Public access specifier
-    int x;   // Public attribute
-    void    set_value(int value);
-    int     get_value();
-  private:   // Private access specifier
-    int y;   // Private attribute
-};
+// class MyClass {
+//   public:    // Public access specifier
+//     int x;   // Public attribute
+//     void    set_value(int value);
+//     int     get_value();
+//   private:   // Private access specifier
+//     int y;   // Private attribute
+// };
 
-void    MyClass::set_value(int value){
-    y = value;
-}
-int     MyClass::get_value(){
-    return (y);
-}
+// void    MyClass::set_value(int value){
+//     y = value;
+// }
+// int     MyClass::get_value(){
+//     return (y);
+// }
 
 int main(){
-    MyClass obj1;
-    obj1.x = 10;
-    // obj1.y = 8; this is not allowed cus we have data of y inside the private access specifier !!
-    obj1.set_value(5);
-    std::cout << "x = " << obj1.x << std::endl;
-    std::cout << "y = " << obj1.get_value() << std::endl;
-    /*
-        this method is Encapsulation :
-        The meaning of Encapsulation, is to make sure that "sensitive" data is hidden from users.
-        To achieve this, you must declare class variables/attributes as private
-        (cannot be accessed from outside the class).
-    */
+
+    std::string line = "ahlan";
+    std::sting obj = line;
+    
 }
