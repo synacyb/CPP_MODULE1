@@ -18,13 +18,13 @@ class PhoneBook{
         int num_contacts;
     public:
         PhoneBook();
-    int    add_contact();
-    int    display_contacts();
-    int    check_set_first_name();
-    int    check_set_last_name();
-    int    check_set_nickname();
-    int    check_set_phone_num();
-    int    check_set_dark_secret();
+        int    add_contact();
+        int    display_contacts();
+        int    check_set_first_name();
+        int    check_set_last_name();
+        int    check_set_nickname();
+        int    check_set_phone_num();
+        int    check_set_dark_secret();
 };
 
 #endif
